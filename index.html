@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CRUD</title>
+    <script src="../libs/angular.min.js"></script>
+    <script src="js/Product.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/factory.js"></script>
+    <script src="js/controller.js"></script>
+    <link rel="stylesheet" href="custom.css">
+</head>
+
+<body ng-app="myApp">
+    <div ng-controller="myctrl">
+        <fieldset id="input">
+
+            <legend>CRUD</legend>
+            <table>
+                <tr>
+                    <td><label for="">Product: </label></td>
+                    <td><input type="text" ng-model="prodname" placeholder="Type Product"></td>
+                </tr>
+                <tr>
+                    <td><label for="">Price: </label></td>
+                    <td><input type="number" ng-model="price" ng-init="price=0" placeholder="Type Price"></td>
+                </tr>
+                <tr>
+                    <td><label for="">Desc: </label></td>
+                    <td><textarea ng-model="desc" cols="30" rows="10" placeholder="Type Desc"></textarea></td>
+                </tr>
+                <tr>
+                    <td><label for="">Quantity: </label></td>
+                    <td><input type="number" ng-model="qty" ng-init="qty=0" placeholder="Type qty"></td>
+                </tr>
+            </table>
+            <button ng-click="addProduct()">Add</button>
+            <button ng-click="delProduct()">Delete</button>
+            <button ng-click="update()">Update</button>
+            <button ng-click="search(prodname)">Search</button>
+            <button ng-click="list()">List</button>
+
+        </fieldset>
+
+        <fieldset id="output">
+            <legend>Products</legend>
+            <table border="1">
+                <thead>
+                    <td>PID</td>
+                    <td>Product</td>
+                    <td>Price</td>
+                    <td>Desc</td>
+                    <td>Quantity</td>
+                    <td>Operation</td>
+                </thead>
+                <tbody>
+                    <tr ng-class="{red:product.markForDeletion,yellow:product.markForEdit}" ng-repeat="product in products">
+                        <td>{{product.pid}}</td>
+                        <td>{{product.prodname}}</td>
+                        <td>{{product.price}}</td>
+                        <td>{{product.desc}}</td>
+                        <td>{{product.qty}}</td>
+                        <td><img ng-click="markDelete(product)" src="Images/delete.jpg" alt="Delete">
+                            <img ng-click="markEdit(product)" src="Images/edit.png" alt="Edit"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+
+            <br>
+            <h5>Total Records: {{totRecord}}</h5>
+            <h5>Selected: {{selected}}</h5>
+        </fieldset>
+
+    </div>
+</body>
+
+</html>

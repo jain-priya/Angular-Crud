@@ -1,0 +1,22 @@
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+#input {
+    margin: 20px;
+    padding: 20px;
+}
+
+#output {
+    margin: 30px;
+    padding: 30px;
+}
+
+.red {
+    background-color: red;
+}
+
+.yellow {
+    background-color: yellow;
+}
